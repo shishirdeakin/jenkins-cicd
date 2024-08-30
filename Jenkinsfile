@@ -39,12 +39,12 @@ pipeline {
     }
     post {
     success {
-        emailext to: 's224369862@deakin.edu.au',
+        emailext to: 's224365862@deakin.edu.au',
                 subject: "SUCCESS: ${env.JOB_NAME} - ${env.BUILD_NUMBER}",
                 body: "The pipeline has successfully passed the ${currentBuild.currentResult} stage."
     }
     failure {
-        emailext to: 's224369862@deakin.edu.au',
+        emailext to: 's224365862@deakin.edu.au',
                 subject: "FAILURE: ${env.JOB_NAME} - ${env.BUILD_NUMBER}",
                 body: "The pipeline has failed at the ${currentBuild.currentResult} stage.",
                 attachLog: true
