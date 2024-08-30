@@ -23,7 +23,7 @@ pipeline {
         }
         stage('Deploy to Staging') {
             steps {
-                echo 'Deploying to staging server...'
+                echo 'Deploying to staging server with AWS EC2 Instance'
             }
         }
         stage('Integration Tests on Staging') {
@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Deploy to Production') {
             steps {
-                echo 'Deploying to production server...'
+                echo 'Deploying to production server with AWS EC2 Instance'
             }
         }
     }
