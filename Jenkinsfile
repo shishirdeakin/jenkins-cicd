@@ -39,15 +39,22 @@ pipeline {
     }
     post {
     success {
-        emailext to: 'shishirgenz@gmail.com',
-                subject: "SUCCESS: ${env.JOB_NAME} - ${env.BUILD_NUMBER}",
-                body: "The pipeline has successfully passed the ${currentBuild.currentResult} stage."
+        emailext (
+            subject: "SUCCESS: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+            body: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' was successful. Please find the logs attached.",
+            to: 'shishirgenz@gmail.com',
+            attachLog: true,
+            attachmentsPattern: "**/build.log"
+        )
     }
     failure {
-        emailext to: 'shishirgenz@gmail.com',
-                subject: "FAILURE: ${env.JOB_NAME} - ${env.BUILD_NUMBER}",
-                body: "The pipeline has failed at the ${currentBuild.currentResult} stage.",
-                attachLog: true
+        emailext (
+            subject: "FAILURE: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]'",
+            body: "Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' failed. Please find the logs attached.",
+            to: 'shishirgenz@gmail.com',
+            attachLog: true,
+            attachmentsPattern: "**/build.log"
+        )
     }
 }
 }
